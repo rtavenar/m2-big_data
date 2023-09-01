@@ -1,0 +1,8 @@
+dask
+pandas
+numpy
+jupyter
+scikit-learn
+dask-ml
+tensorflow
+keras_core
