@@ -4,8 +4,6 @@ Dans cette séance, vous allez apprendre à utiliser une interface en ligne de c
 
 Pour cette séance, vous pourrez travailler dans un Terminal si vous disposez d'un système d'exploitation basé sur Unix (Linux ou MacOS, typiquement). Sinon, il vous est recommandé de créer un compte sur la plateforme Deepnote, et d'y créer un nouveau projet nommé `TP_ligne_de_commande`. Une fois ce nouveau projet ouvert, vous pourrez démarrer un Terminal (_cf._ bandeau de gauche) et travailler, à distance, sur un système Unix.
 
-**TODO :** ne laisser que des exercices de base dans les sections, tous les exos qui demandent un peu de "réflexion" se trouvant reportés à la fin, pour les forcer à revenir sur ce qui a été présenté dans les différentes partiers et se l'approprier
-
 ## Principes de base
 
 * Format des commandes (`nomduprog arg1 arg2 --nom_arg val_arg`)
@@ -43,3 +41,7 @@ Pour cette séance, vous pourrez travailler dans un Terminal si vous disposez d'
 * Variables d'environnement (et `echo`, `export` ?)
     * Parler de comment on récupère une variable d'environnement en Python par exemple ?
 * `which`
+
+## Exercices
+
+**TODO :** ne laisser que des exercices de base dans les sections, tous les exos qui demandent un peu de "réflexion" se trouvant reportés à la fin, pour les forcer à revenir sur ce qui a été présenté dans les différentes partiers et se l'approprier
