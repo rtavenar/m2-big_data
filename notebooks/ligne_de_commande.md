@@ -36,14 +36,11 @@ cd "./chemin vers/mon_dossier/de travail"
 **Question 1.2.** Dans les deux commandes suivantes, quel est le nom du programme exécuté, et quels sont les arguments qui lui sont passés en entrée ?
 
 ```bash
-wget https://raw.githubusercontent.com/rtavenar/m2-big_data/main/notebooks/data/unix/unix.zip unix_data.zip
+wget https://raw.githubusercontent.com/rtavenar/m2-big_data/main/notebooks/data/unix/unix.zip --output-document unix_data.zip
 unzip unix_data.zip
-chmod ugo+x lire_args.py
 ```
 
-**TODO:** `wget` d'une archive des fichiers nécessaires suivi d'un `unzip`
-
-**Question 1.3.** Exécutez les commandes précédentes l'une après l'autre et vérifiez que de nouveaux fichiers et dossiers ont été téléchargés puis décompressés (c'est le sens respectif des commandes `wget` et `unzip`). **TODO:** ajouter `chmod` ou les droits persistent dans le zip ?
+**Question 1.3.** Exécutez les commandes précédentes l'une après l'autre et vérifiez que de nouveaux fichiers et dossiers ont été téléchargés puis décompressés (c'est le sens respectif des commandes `wget` et `unzip`). 
 
 **Question 1.4.** Exécutez le script Python `./lire_args.py` en lui passant les arguments de votre choix (quel que soit leur sens, il s'agit d'un exemple jouet). Quelle sortie obtenez-vous ?
 
