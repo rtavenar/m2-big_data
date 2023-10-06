@@ -53,7 +53,18 @@ Nom de l'argument : --nom_chose
 Valeur de l'argument : chose
 ```
 
-**Question 1.5.** Répétez l'opération précédente en lui passant `data/*.csv` comme un des arguments. Qu'observez-vous ?
+**Question 1.5.** Répétez l'opération précédente en lui passant `*.csv` comme un des arguments. Qu'observez-vous ?
+
+```
+./lire_args.py truc machin --nom_chose chose *.csv
+Nom du programme : ./lire_args.py
+* Valeur de l'argument (non nommé) : truc
+* Valeur de l'argument (non nommé) : machin
+* Nom de l'argument : --nom_chose
+  * Valeur de l'argument : chose
+* Valeur de l'argument (non nommé) : M1_2022-2023.csv
+* Valeur de l'argument (non nommé) : M2_2023-2024.csv
+```
 
 ## 2. Système de fichiers Unix
 
@@ -139,9 +150,19 @@ Prenons quelques exemples pour comprendre son usage :
     chmod ugo+r mon_fichier
     ```
 
-**Question 2.3.** Quels sont les droits accordés à votre utilisateur sur les fichiers `.txt` que vous avez déplacés dans le sous-dossier `data/` ? Vérifiez que vous êtes bien propriétaire de ces fichiers.
+**Question 2.3.** Quels sont les droits accordés à votre utilisateur sur les fichiers `.csv` que vous avez déplacés dans le sous-dossier `data/` ? Vérifiez que vous êtes bien propriétaire de ces fichiers.
 
-**Question 2.4.** Que signifie la commande `chmod ugo+x lire_args.py` que l'on vous a demandé d'exécuter à la question 1.3 ? Pourquoi était-ce nécessaire ?
+```bash
+ls -alh data/*.csv
+-rw-r--r--@ 1 rtavenar  staff   747B 29 sep 17:11 M1_2022-2023.csv
+-rw-r--r--@ 1 rtavenar  staff   774B 29 sep 17:11 M2_2023-2024.csv
+```
+
+**Question 2.4.** Ajoutez les droits d'exécutions aux utilisateurs du groupe propriétaire du fichier `lire_args.py`.
+
+```bash
+chmod g+x lire_args.py
+```
 
 Dans les deux dernières questions de la section 1., vous avez spécifié expressément le chemin du script / programme à exécuter. 
 Lorsque vous ne spécifiez pas cette information, le _shell_ (le système qui permet d'exécuter les commandes dans votre terminal) va chercher si le programme que vous souhaitez exécuter existe dans l'un de dossiers enregistrés comme pouvant contenir des programmes du systèmes.
@@ -157,6 +178,11 @@ echo $PATH
 
 **Question 2.6.** Le dossier courant (`.`) est-il inclus dans votre `$PATH` ? 
 Confirmer / infirmer en essayant d'exécuter le programme `lire_args.py` du dossier courant sans préciser son chemin relatif.
+
+```bash
+lire_args.py
+zsh: command not found: lire_args.py
+```
 
 
 **Trucs & Astuces**
@@ -202,7 +228,7 @@ wc -l M1_2022-2023.csv
 wc -l M2_2023-2024.csv
 ```
 
-**Question 3.3.** Affichez toutes les lignes débutant par un numéro étudiant de la forme `221`.
+**Question 3.3.** Affichez toutes les lignes contenant un numéro étudiant qui débute par `221`.
 
 ```bash
 grep "^221" *.csv
@@ -222,6 +248,7 @@ Cette sortie correspond en fait au contenu de deux canaux : `stdout` stocke la "
 Ces deux flux sont traités comme des fichiers dans lesquels les programmes écrivent au fur et à mesure de leur exécution et dont les contenus sont affichés en quasi-temps réel dans le terminal.
 
 Il est possible de rediriger la sortie standard d'un programme pour que, au lieu de s'écrire dans un terminal, soit elle s'écrive dans un fichier texte, soit elle serve d'entrée à un autre programme :
+
 ```bash
 # Écriture dans un fichier texte
 nom_du_programme arg1 arg2 > fichier_sortie.txt
@@ -237,10 +264,14 @@ nom_du_programme arg1 arg2 | autre_programme
 head -n 10 M1_2022-2023.csv | tail -n 1
 ```
 
-**Question 4.2.** Comptez le nombre de lignes des fichiers `M1_2022-2023.csv` et `M2_2023-2024.csv` débutant par un numéro étudiant de la forme `221`.
+**Question 4.2.** Comptez le nombre de lignes des fichiers `M1_2022-2023.csv` et `M2_2023-2024.csv` contenant un numéro étudiant qui débute par `221`.
 
 ```bash
 grep "^221" *.csv | wc -l
 ```
 
 **Question 4.3.** Même question en supprimant les doublons. (jetez un oeil aux documentations de `sort` et `uniq`)
+
+```bash
+cat *.csv | grep "^221" | sort | uniq | wc -l
+```
