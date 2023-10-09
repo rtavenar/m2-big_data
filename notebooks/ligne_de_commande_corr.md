@@ -79,7 +79,7 @@ Nom du programme : ./lire_args.py
 
 # 2. Système de fichiers Unix
 
-Le système de fichiers Unix possède plusieurs caractéristiques importantes. Toutes les données dans Unix sont organisées sous forme de fichiers. Tous les fichiers sont regroupés dans des dossiers. Ces dossiers sont organisés dans une structure arborescente appelée système de fichiers, comme vous y êtes habitués dans d'autres sytèmes de fichiers.
+Le système de fichiers Unix possède plusieurs caractéristiques importantes. Toutes les données dans Unix sont organisées sous forme de fichiers. Tous les fichiers sont regroupés dans des dossiers. Ces dossiers sont organisés dans une structure arborescente appelée système de fichiers, comme vous y êtes habitués dans d'autres systèmes de fichiers.
 
 En haut de la hiérarchie du système de fichiers Unix se trouve un répertoire appelé "racine", représenté par `/`. Tous les autres fichiers sont des "descendants" de la racine.
 Dans la plupart des OS qui utilisent cette structure pour leur système de fichiers, un dossier spécifique est créé pour chaque utilisateur et il est désigné par le raccourci `~/` (`~/` pointe donc toujours vers le le dossier "home" de l'utilisateur courant, qui correspond souvent au chemin `/home/nom_d_utilisateur/`, ou `/Users/nom_d_utilisateur/` sous macOS).
