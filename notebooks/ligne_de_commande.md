@@ -6,7 +6,7 @@ title: "Initiation aux commandes Unix"
 
 ```bash
 curl 'https://raw.githubusercontent.com/ryangrose/easy-pandoc-templates/master/copy_templates.sh' | bash
-pandoc ligne_de_commande_corr.md -o ligne_de_commande_corr.html --template=easy_template.html
+pandoc ligne_de_commande.md -o ligne_de_commande.html --template=easy_template.html
 ``` -->
 
 Dans cette séance, vous allez apprendre à utiliser une interface en ligne de commande pour exécuter des tâches simples.
@@ -40,10 +40,6 @@ Notez que dans les exemples plus haut, pour plus de clarté, on a indiqué le pr
 
 **Question 1.1.** Créez, avec votre navigateur de fichier préféré, un dossier dans vos documents dédié à la séance de ce jour. Démarrez un terminal. Sachant que l'utilitaire `cd` permet de changer le dossier de travail du terminal, et qu'il prend comme unique argument le chemin (relatif ou absolu) vers le nouveau dossier de travail, quelle commande faut-il entrer pour vous placer dans le dossier nouvellement créé ?
 
-```bash
-% cd "./chemin vers/mon_dossier/de travail"
-```
-
 **Question 1.2.** Dans les deux commandes suivantes, quel est le nom du programme exécuté, et quels sont les arguments qui lui sont passés en entrée ?
 
 ```bash
@@ -55,27 +51,7 @@ Notez que dans les exemples plus haut, pour plus de clarté, on a indiqué le pr
 
 **Question 1.4.** Exécutez le script Python `./lire_args.py` en lui passant les arguments de votre choix (quel que soit leur sens, il s'agit d'un exemple jouet). Quelle sortie obtenez-vous ?
 
-```
-% ./lire_args.py truc machin --nom_chose chose
-Nom du programme : ./lire_args.py
-Valeur de l'argument : truc
-Valeur de l'argument : machin
-Nom de l'argument : --nom_chose
-Valeur de l'argument : chose
-```
-
 **Question 1.5.** Répétez l'opération précédente en lui passant `*.csv` comme un des arguments. Qu'observez-vous ?
-
-```
-% ./lire_args.py truc machin --nom_chose chose *.csv
-Nom du programme : ./lire_args.py
-* Valeur de l'argument (non nommé) : truc
-* Valeur de l'argument (non nommé) : machin
-* Nom de l'argument : --nom_chose
-  * Valeur de l'argument : chose
-* Valeur de l'argument (non nommé) : M1_2022-2023.csv
-* Valeur de l'argument (non nommé) : M2_2023-2024.csv
-```
 
 # 2. Système de fichiers Unix
 
@@ -98,20 +74,7 @@ Les commandes importantes pour naviguer dans un système de fichiers Unix sont l
 
 **Question 2.1.** Utilisez la commande `whoami` pour connaître le nom de l'utilisateur courant. Vérifiez qu'un dossier `/home/nom_d_utilisateur/` (ou `/Users/nom_d_utilisateur/` si vous êtes sous macOS) existe bien.
 
-```
-% whoami
-rtavenar
-% ls /home/rtavenar
-ls: /home/rtavenar: No such file or directory
-% ls /Users/rtavenar
-```
-
 **Question 2.2.** Créez un sous-dossier `data/` dans le dossier courant et déplacez-y tous les fichiers dont l'extension est `.txt` ou `.csv` du dossier courant.
-
-```bash
-% mkdir data
-% mv *.csv *.txt data/
-```
 
 Sous Unix, les fichiers ont des permissions, c'est-à-dire que chaque utilisateur a le droit ou non d'interagir avec eux.
 Il existe trois types de permissions :
@@ -171,17 +134,7 @@ Prenons quelques exemples pour comprendre son usage :
 
 **Question 2.3.** Quels sont les droits accordés à votre utilisateur sur les fichiers `.csv` que vous avez déplacés dans le sous-dossier `data/` ? Vérifiez que vous êtes bien propriétaire de ces fichiers.
 
-```bash
-% ls -alh data/*.csv
--rw-r--r--@ 1 rtavenar  staff   747B 29 sep 17:11 M1_2022-2023.csv
--rw-r--r--@ 1 rtavenar  staff   774B 29 sep 17:11 M2_2023-2024.csv
-```
-
 **Question 2.4.** Ajoutez les droits d'exécutions aux utilisateurs du groupe propriétaire du fichier `lire_args.py`.
-
-```bash
-% chmod g+x lire_args.py
-```
 
 Dans les deux dernières questions de la section 1., vous avez spécifié expressément le chemin du script / programme à exécuter. 
 Lorsque vous ne spécifiez pas cette information, le _shell_ (le système qui permet d'exécuter les commandes dans votre terminal) va chercher si le programme que vous souhaitez exécuter existe dans l'un de dossiers enregistrés comme pouvant contenir des programmes du systèmes.
@@ -190,18 +143,8 @@ Cette liste de dossiers est contenue dans une variable d'environnement nommée `
 
 **Question 2.5.** Sachant que la commande `echo` permet d'afficher le contenu d'une variable d'environnement, utilisez-le pour voir le contenu de votre `$PATH`. Que signifie le caractère `:` dans l'affichage que vous obtenez ?
 
-```bash
-% echo $PATH
-/Users/rtavenar/py3.10_ml/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:/Users/rtavenar/py3.10_ml/bin:/Users/rtavenar/.rvm/bin
-```
-
 **Question 2.6.** Le dossier courant (`.`) est-il inclus dans votre `$PATH` ? 
 Confirmer / infirmer en essayant d'exécuter le programme `lire_args.py` du dossier courant sans préciser son chemin relatif.
-
-```bash
-% lire_args.py
-zsh: command not found: lire_args.py
-```
 
 
 ## Trucs & Astuces
@@ -235,29 +178,11 @@ On peut également souhaiter trouver les occurrences d'une chaîne de caractère
 
 **Question 3.1.** Quels sont les champs (en-tête de colonnes) des fichiers `M1_2022-2023.csv` et `M2_2023-2024.csv` ?
 
-```bash
-% head -n 1 M1_2022-2023.csv
-% head -n 1 M2_2023-2024.csv
-```
-
 **Question 3.2.** Combien de lignes contiennent respectivement ces fichiers ?
-
-```bash
-% wc -l M1_2022-2023.csv
-% wc -l M2_2023-2024.csv
-```
 
 **Question 3.3.** Affichez toutes les lignes contenant un numéro étudiant qui débute par `221`.
 
-```bash
-% grep "^221" *.csv
-```
-
 **Question 3.4.** Listez les étudiants qui n'étaient pas en M1 en 2022-2023 et qui sont en M2 en 2023-2024 et, respectivement, ceux qui étaient en M1 en 2022-2023 et qui sont pas en M2 en 2023-2024.
-
-```bash
-% diff M1_2022-2023.csv M2_2023-2024.csv
-```
 
 # 4. Enchaînement de commandes
 
@@ -279,18 +204,6 @@ Il est possible de rediriger la sortie standard d'un programme pour que, au lieu
 
 **Question 4.1.** Afficher uniquement la ligne 10 du fichier `M1_2022-2023.csv`.
 
-```bash
-% head -n 10 M1_2022-2023.csv | tail -n 1
-```
-
 **Question 4.2.** Comptez le nombre de lignes des fichiers `M1_2022-2023.csv` et `M2_2023-2024.csv` contenant un numéro étudiant qui débute par `221`.
 
-```bash
-% grep "^221" *.csv | wc -l
-```
-
 **Question 4.3.** Même question en supprimant les doublons (jetez un oeil aux documentations de `sort` et `uniq`).
-
-```bash
-% cat *.csv | grep "^221" | sort | uniq | wc -l
-```
