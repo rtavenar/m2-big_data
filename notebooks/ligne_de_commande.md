@@ -72,9 +72,9 @@ Les commandes importantes pour naviguer dans un système de fichiers Unix sont l
 * [`mv`](https://www.gnu.org/software/coreutils/manual/html_node/mv-invocation.html) : déplacer un fichier ou dossier
 * [`rm`](https://www.gnu.org/software/coreutils/manual/html_node/rm-invocation.html) : supprimer un fichier
 
-**Question 2.1.** Utilisez la commande `whoami` pour connaître le nom de l'utilisateur courant. Vérifiez qu'un dossier `/home/nom_d_utilisateur/` (ou `/Users/nom_d_utilisateur/` si vous êtes sous macOS) existe bien.
+**Question 2.1.** Utilisez la commande `whoami` pour connaître le nom de l'utilisateur courant. Vérifiez qu'un dossier `/home/nom_d_utilisateur/` (ou `/Users/nom_d_utilisateur/` si vous êtes sous macOS) existe bien. Si vous êtes sur Deepnote et qu'un tel dossier n'existe pas, existe-t-il d'autres dossiers utilisateurs ?
 
-**Question 2.2.** Créez un sous-dossier `data/` dans le dossier courant et déplacez-y tous les fichiers dont l'extension est `.txt` ou `.csv` du dossier courant.
+**Question 2.2.** Créez un sous-dossier `data/` dans le dossier courant et déplacez-y tous les fichiers dont l'extension est `.csv` du dossier courant.
 
 Sous Unix, les fichiers ont des permissions, c'est-à-dire que chaque utilisateur a le droit ou non d'interagir avec eux.
 Il existe trois types de permissions :
@@ -175,6 +175,8 @@ Parfois, les fichiers sont trop volumineux et les afficher entièrement dans le 
 On peut également souhaiter trouver les occurrences d'une chaîne de caractères ou d'une expression régulière dans un (ou plusieurs) fichier(s). Cela se fait en utilisant l'outil [`grep`](https://www.gnu.org/software/grep/manual/grep.html#Invoking-grep).
 
 [`wc`](https://www.gnu.org/software/coreutils/manual/html_node/wc-invocation.html) est un autre utilitaire bien pratique qui permet de compter le nombre de lignes, de caractères, ou de mots d'un fichier texte.
+
+Enfin, [`diff`](https://www.gnu.org/software/diffutils/) permet d'afficher les différences (lignes qui contiennent des différences) entre deux fichiers texte.
 
 **Question 3.1.** Quels sont les champs (en-tête de colonnes) des fichiers `M1_2022-2023.csv` et `M2_2023-2024.csv` ?
 

@@ -96,7 +96,7 @@ Les commandes importantes pour naviguer dans un système de fichiers Unix sont l
 * [`mv`](https://www.gnu.org/software/coreutils/manual/html_node/mv-invocation.html) : déplacer un fichier ou dossier
 * [`rm`](https://www.gnu.org/software/coreutils/manual/html_node/rm-invocation.html) : supprimer un fichier
 
-**Question 2.1.** Utilisez la commande `whoami` pour connaître le nom de l'utilisateur courant. Vérifiez qu'un dossier `/home/nom_d_utilisateur/` (ou `/Users/nom_d_utilisateur/` si vous êtes sous macOS) existe bien.
+**Question 2.1.** Utilisez la commande `whoami` pour connaître le nom de l'utilisateur courant. Vérifiez qu'un dossier `/home/nom_d_utilisateur/` (ou `/Users/nom_d_utilisateur/` si vous êtes sous macOS) existe bien. Si vous êtes sur Deepnote et qu'un tel dossier n'existe pas, existe-t-il d'autres dossiers utilisateurs ?
 
 ```
 % whoami
@@ -106,7 +106,7 @@ ls: /home/rtavenar: No such file or directory
 % ls /Users/rtavenar
 ```
 
-**Question 2.2.** Créez un sous-dossier `data/` dans le dossier courant et déplacez-y tous les fichiers dont l'extension est `.txt` ou `.csv` du dossier courant.
+**Question 2.2.** Créez un sous-dossier `data/` dans le dossier courant et déplacez-y tous les fichiers dont l'extension est `.csv` du dossier courant.
 
 ```bash
 % mkdir data
@@ -233,6 +233,8 @@ On peut également souhaiter trouver les occurrences d'une chaîne de caractère
 
 [`wc`](https://www.gnu.org/software/coreutils/manual/html_node/wc-invocation.html) est un autre utilitaire bien pratique qui permet de compter le nombre de lignes, de caractères, ou de mots d'un fichier texte.
 
+Enfin, [`diff`](https://www.gnu.org/software/diffutils/) permet d'afficher les différences (lignes qui contiennent des différences) entre deux fichiers texte.
+
 **Question 3.1.** Quels sont les champs (en-tête de colonnes) des fichiers `M1_2022-2023.csv` et `M2_2023-2024.csv` ?
 
 ```bash
@@ -251,6 +253,12 @@ On peut également souhaiter trouver les occurrences d'une chaîne de caractère
 
 ```bash
 % grep "^221" *.csv
+```
+
+ou
+
+```bash
+grep -x "221.*" data/*.csv
 ```
 
 **Question 3.4.** Listez les étudiants qui n'étaient pas en M1 en 2022-2023 et qui sont en M2 en 2023-2024 et, respectivement, ceux qui étaient en M1 en 2022-2023 et qui sont pas en M2 en 2023-2024.
@@ -293,4 +301,10 @@ Il est possible de rediriger la sortie standard d'un programme pour que, au lieu
 
 ```bash
 % cat *.csv | grep "^221" | sort | uniq | wc -l
+```
+
+ou
+
+```bash
+grep -h '^221' data/*.csv | sort | uniq |wc -l
 ```
