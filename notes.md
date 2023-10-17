@@ -59,3 +59,8 @@
     * regarder cours de Spark à l'ENSAI (Smart Data)
     * joblib plutot que concurrent futures ?
         * En tout cas leur faire prendre conscience de quoi paralleliser, notamment en cas de boucles imbriquées, penser à ne paralléliser que la boucle extérieure
+
+## À améliorer pour l'an prochain
+
+* Avoir un serveur (voire cluster) accessible bien configuré pour les TP ligne de commande, Hadoop et spark
+* Mieux gérer l'enchaînement des séances et l'imbrication avec les cours de ML & deep (ne pas aller trop vite)
