@@ -64,3 +64,6 @@
 
 * Avoir un serveur (voire cluster) accessible bien configuré pour les TP ligne de commande, Hadoop et spark
 * Mieux gérer l'enchaînement des séances et l'imbrication avec les cours de ML & deep (ne pas aller trop vite)
+* TP ligne de commande : insister + sur les entrés / sorties standard (+ d'exemples en Python notamment) pour mieux préparer Hadoop MapReduce via Streaming
+* Résoudre le bug des caractères de fin de ligne au format Windows
+* Faire un meilleur 3ème exo pour Hadoop mapreduce
