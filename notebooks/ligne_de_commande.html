@@ -1,0 +1,426 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+  
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+        
+  
+    <!-- <script src="script.js"></script> -->
+  
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+  <title>Initiation aux commandes Unix</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+
+    
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">Initiation aux commandes Unix</span>
+        <ul class="nav pull-right doc-info">
+                            </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div class="span12">
+
+      
+      <!-- Pour compiler ce document :
+
+```bash
+curl 'https://raw.githubusercontent.com/ryangrose/easy-pandoc-templates/master/copy_templates.sh' | bash
+pandoc ligne_de_commande.md -o ligne_de_commande.html --template=easy_template.html
+``` -->
+<p>Dans cette séance, vous allez apprendre à utiliser une interface en
+ligne de commande pour exécuter des tâches simples.</p>
+<p>On parlera ici de commandes Unix, par abus de langage. Unix est en
+fait un système d’exploitation dans lequel la ligne de commande joue un
+grand rôle.</p>
+<p>Pour cette séance, vous pourrez travailler dans un Terminal si vous
+disposez d’un système d’exploitation basé sur Unix (Linux ou MacOS,
+typiquement). Sinon, il vous est recommandé de créer un compte sur <a
+href="www.deepnote.com">la plateforme Deepnote</a>, et d’y créer un
+nouveau projet nommé <code>TP_ligne_de_commande</code>. Une fois ce
+nouveau projet ouvert, vous pourrez démarrer un Terminal (<em>cf.</em>
+bandeau de gauche) et travailler, à distance, sur un système de type
+Unix.</p>
+<h1 id="principes-de-base">1. Principes de base</h1>
+<p>Une commande Unix a le format suivant :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 arg2 <span class="at">--nom_arg3</span> val_arg3</span></code></pre></div>
+<p>où <code>arg1</code>, <code>arg2</code>, et
+<code>--nom_arg3 val_arg3</code> sont des arguments passés en entrée au
+programme, un peu à la façon d’une fonction Python qui prendrait 3
+arguments et que l’on appellerait via :</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f(arg1, arg2, nom_arg3<span class="op">=</span>val_arg3)</span></code></pre></div>
+<p>On voit donc ici que la séparation entre les différents arguments
+passés en entrée d’un programme se fait à chaque espace. Si on souhaite
+insérer un espace dans la valeur d’un argument lors de l’appel, il
+faudra donc entourer cette valeur par des guillemets :</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 <span class="st">&quot;arg2 avec des espaces dedans&quot;</span></span></code></pre></div>
+<p>Notez que dans les exemples plus haut, pour plus de clarté, on a
+indiqué le prompt (ce qui est écrit dans le terminal avant le curseur)
+avec le caractère <code>%</code>. Nous utiliserons cette notation dans
+la suite de ce TP pour bien différencier les commandes de leurs sorties
+(=affichages).</p>
+<p><strong>Question 1.1.</strong> Créez, avec votre navigateur de
+fichier préféré, un dossier dans vos documents dédié à la séance de ce
+jour. Démarrez un terminal. Sachant que l’utilitaire <code>cd</code>
+permet de changer le dossier de travail du terminal, et qu’il prend
+comme unique argument le chemin (relatif ou absolu) vers le nouveau
+dossier de travail, quelle commande faut-il entrer pour vous placer dans
+le dossier nouvellement créé ?</p>
+<p><strong>Question 1.2.</strong> Dans les deux commandes suivantes,
+quel est le nom du programme exécuté, et quels sont les arguments qui
+lui sont passés en entrée ?</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> wget https://raw.githubusercontent.com/rtavenar/m2-big_data/main/notebooks/data/unix/unix.zip <span class="at">--output-document</span> unix_data.zip</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> unzip unix_data.zip</span></code></pre></div>
+<p><strong>Question 1.3.</strong> Exécutez les commandes précédentes
+l’une après l’autre et vérifiez que de nouveaux fichiers et dossiers ont
+été téléchargés puis décompressés (c’est le sens respectif des commandes
+<code>wget</code> et <code>unzip</code>).</p>
+<p><strong>Question 1.4.</strong> Exécutez le script Python
+<code>./lire_args.py</code> en lui passant les arguments de votre choix
+(quel que soit leur sens, il s’agit d’un exemple jouet). Quelle sortie
+obtenez-vous ?</p>
+<p><strong>Question 1.5.</strong> Répétez l’opération précédente en lui
+passant <code>*.csv</code> comme un des arguments. Qu’observez-vous
+?</p>
+<h1 id="système-de-fichiers-unix">2. Système de fichiers Unix</h1>
+<p>Le système de fichiers Unix possède plusieurs caractéristiques
+importantes. Toutes les données dans Unix sont organisées sous forme de
+fichiers. Tous les fichiers sont regroupés dans des dossiers. Ces
+dossiers sont organisés dans une structure arborescente appelée système
+de fichiers, comme vous y êtes habitués dans d’autres systèmes de
+fichiers.</p>
+<p>En haut de la hiérarchie du système de fichiers Unix se trouve un
+répertoire appelé “racine”, représenté par <code>/</code>. Tous les
+autres fichiers sont des “descendants” de la racine. Dans la plupart des
+OS qui utilisent cette structure pour leur système de fichiers, un
+dossier spécifique est créé pour chaque utilisateur et il est désigné
+par le raccourci <code>~/</code> (<code>~/</code> pointe donc toujours
+vers le le dossier “home” de l’utilisateur courant, qui correspond
+souvent au chemin <code>/home/nom_d_utilisateur/</code>, ou
+<code>/Users/nom_d_utilisateur/</code> sous macOS).</p>
+<p>À n’importe quel niveau de la hiérarchie, le dossier <code>.</code>
+représente le dossier courant et <code>..</code> son dossier parent dans
+la hiérarchie des dossiers.</p>
+<p>Les commandes importantes pour naviguer dans un système de fichiers
+Unix sont les suivantes :</p>
+<ul>
+<li><a
+href="https://www.gnu.org/software/coreutils/manual/html_node/pwd-invocation.html"><code>pwd</code></a>
+: obtenir le chemin vers le dossier courant</li>
+<li><a
+href="https://www.gnu.org/software/coreutils/manual/html_node/ls-invocation.html"><code>ls</code></a>
+: lister les dossiers et fichiers</li>
+<li><code>cd</code> : changer le dossier courant</li>
+<li><a
+href="https://www.gnu.org/software/coreutils/manual/html_node/mkdir-invocation.html"><code>mkdir</code></a>
+: créer un répertoire</li>
+<li><a
+href="https://www.gnu.org/software/coreutils/manual/html_node/cp-invocation.html"><code>cp</code></a>
+: copier un fichier ou dossier</li>
+<li><a
+href="https://www.gnu.org/software/coreutils/manual/html_node/mv-invocation.html"><code>mv</code></a>
+: déplacer un fichier ou dossier</li>
+<li><a
+href="https://www.gnu.org/software/coreutils/manual/html_node/rm-invocation.html"><code>rm</code></a>
+: supprimer un fichier</li>
+</ul>
+<p><strong>Question 2.1.</strong> Utilisez la commande
+<code>whoami</code> pour connaître le nom de l’utilisateur courant.
+Vérifiez qu’un dossier <code>/home/nom_d_utilisateur/</code> (ou
+<code>/Users/nom_d_utilisateur/</code> si vous êtes sous macOS) existe
+bien. Si vous êtes sur Deepnote et qu’un tel dossier n’existe pas,
+existe-t-il d’autres dossiers utilisateurs ?</p>
+<p><strong>Question 2.2.</strong> Créez un sous-dossier
+<code>data/</code> dans le dossier courant et déplacez-y tous les
+fichiers dont l’extension est <code>.csv</code> du dossier courant.</p>
+<p>Sous Unix, les fichiers ont des permissions, c’est-à-dire que chaque
+utilisateur a le droit ou non d’interagir avec eux. Il existe trois
+types de permissions :</p>
+<ul>
+<li>permission de lecture, notée <code>"r"</code></li>
+<li>permission d’écriture (ou de modification), notée
+<code>"w"</code></li>
+<li>permission d’exécution, notée <code>"x"</code></li>
+</ul>
+<p>De plus, ces permissions peuvent être accordées à l’utilisateur qui
+détient ces fichiers (<code>"user"</code>), au groupe auquel il est
+associé (<code>"group"</code>) ou à tous les utilisateurs du
+système.</p>
+<p>Si on liste les fichiers du dossier courant avec <code>ls -al</code>,
+on a des informations sur les droits associés aux différents fichiers
+:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ls <span class="at">-al</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 8</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x@</span> 3 rtavenar  staff   96 29 sep 10:02 .</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x@</span> 6 rtavenar  staff  192 29 sep 10:02 ..</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwxr--r--@</span> 1 rtavenar  staff  373 29 sep 09:40 lire_args.py</span></code></pre></div>
+<p>On voit ci-dessus que le fichier <code>lire_args.py</code> appartient
+à l’utilisateur <code>rtavenar</code>, du groupe <code>staff</code>, et
+la liste des droits accordés est la suivante : <code>-rwxr--r--</code>.
+Si l’on décortique cette chaîne de caractères, on obtient :</p>
+<ul>
+<li>le premier caractère <code>-</code> sert à indiquer s’il d’agit d’un
+fichier (<code>-</code>) ou d’un dossier (<code>d</code>) ;</li>
+<li>les trois caractères suivants correspondent aux droits de
+l’utilisateur propriétaire du fichier (<code>rtavenar</code> ici) ;</li>
+<li>les trois caractères suivants correspondent aux droits du groupe
+propriétaire du fichier (<code>staff</code> ici) ;</li>
+<li>les trois derniers caractères correspondent aux droits des autres
+utilisateurs.</li>
+</ul>
+<p>L’utilitaire <code>chmod</code> permet de modifier les droits d’un
+utilisateur sur un ou plusieurs fichiers. Prenons quelques exemples pour
+comprendre son usage :</p>
+<ul>
+<li><p>Ajout (<code>+</code>) du droit de lecture (<code>r</code>) pour
+l’utilisateur (<code>u</code>) propriétaire du fichier :</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+r mon_fichier</span></code></pre></div></li>
+<li><p>Suppression (<code>-</code>) du droit de lecture (<code>r</code>)
+pour l’utilisateur (<code>u</code>) propriétaire du fichier :</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u-r mon_fichier</span></code></pre></div></li>
+<li><p>Ajout (<code>+</code>) du droit d’écriture (<code>w</code>) pour
+le groupe (<code>g</code>) propriétaire du fichier :</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> g+w mon_fichier</span></code></pre></div></li>
+<li><p>Ajout (<code>+</code>) du droit d’écriture (<code>w</code>) pour
+les autres utilisateurs (<em>other</em>, ou <code>o</code>) :</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+w mon_fichier</span></code></pre></div></li>
+<li><p>Ajout (<code>+</code>) du droit de lecture (<code>r</code>) pour
+tous les utilisateurs (<code>ugo</code>) :</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ugo+r mon_fichier</span></code></pre></div></li>
+</ul>
+<p><strong>Question 2.3.</strong> Quels sont les droits accordés à votre
+utilisateur sur les fichiers <code>.csv</code> que vous avez déplacés
+dans le sous-dossier <code>data/</code> ? Vérifiez que vous êtes bien
+propriétaire de ces fichiers.</p>
+<p><strong>Question 2.4.</strong> Ajoutez les droits d’exécutions aux
+utilisateurs du groupe propriétaire du fichier
+<code>lire_args.py</code>.</p>
+<p>Dans les deux dernières questions de la section 1., vous avez
+spécifié expressément le chemin du script / programme à exécuter.
+Lorsque vous ne spécifiez pas cette information, le <em>shell</em> (le
+système qui permet d’exécuter les commandes dans votre terminal) va
+chercher si le programme que vous souhaitez exécuter existe dans l’un de
+dossiers enregistrés comme pouvant contenir des programmes du
+systèmes.</p>
+<p>Cette liste de dossiers est contenue dans une variable
+d’environnement nommée <code>$PATH</code>.</p>
+<p><strong>Question 2.5.</strong> Sachant que la commande
+<code>echo</code> permet d’afficher le contenu d’une variable
+d’environnement, utilisez-le pour voir le contenu de votre
+<code>$PATH</code>. Que signifie le caractère <code>:</code> dans
+l’affichage que vous obtenez ?</p>
+<p><strong>Question 2.6.</strong> Le dossier courant (<code>.</code>)
+est-il inclus dans votre <code>$PATH</code> ? Confirmer / infirmer en
+essayant d’exécuter le programme <code>lire_args.py</code> du dossier
+courant sans préciser son chemin relatif.</p>
+<h2 id="trucs-astuces">Trucs &amp; Astuces</h2>
+<p>La commande <code>which</code> permet de connaître le chemin complet
+vers le programme visé, par exemple :</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> which python</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/rtavenar/py3.10_ml/bin/python</span></span></code></pre></div>
+<p>Indique que, lorsque l’on entre la commande <code>python</code> dans
+le terminal, c’est le programme
+<code>/Users/rtavenar/py3.10_ml/bin/python</code> qui sera exécuté.</p>
+<p>Autre astuce qui peut s’avérer utile, on peut, dans le terminal,
+déclencher la complétion automatique en utilisant la touche
+<code>&lt;TAB&gt;</code>. Cela peut permettre de compléter un nom de
+programme (situé dans l’un des dossiers du <code>$PATH</code>), ou un
+nom de fichier (tant que le chemin indiqué, relatif ou absolu, est
+correct).</p>
+<h1 id="outils-gnu">3. Outils GNU</h1>
+<p>Dans le monde des lignes de commandes, un grand nombre de logiciels
+libres (dont ceux présentés à la section précédente pour interagir avec
+un système de fichiers) sont proposés par la <em>Free Software
+Foundation</em> à travers le projet GNU. Ces logiciels sont intégrés par
+défaut dans la plupart des systèmes Linux (on parle même parfois de
+distributions GNU/Linux) ou macOS.</p>
+<p>Dans cette section, nous allons notamment nous concentrer sur les
+logiciels qui permettent de manipuler simplement des fichiers
+textuels.</p>
+<p>La première chose que l’on peut vouloir faire lorsqu’on a un fichier
+textuel à disposition est de le lire. C’est ce que permet <a
+href="https://www.gnu.org/software/coreutils/manual/html_node/cat-invocation.html">le
+programme <code>cat</code></a>.</p>
+<p>Parfois, les fichiers sont trop volumineux et les afficher
+entièrement dans le terminal ne permet pas d’y voir très clair, on peut
+alors utiliser <a
+href="https://www.gnu.org/software/coreutils/manual/html_node/head-invocation.html"><code>head</code></a>
+pour n’afficher que les premières lignes ou <a
+href="https://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html"><code>tail</code></a>
+si l’on ne souhaite afficher que la fin du fichier.</p>
+<p>On peut également souhaiter trouver les occurrences d’une chaîne de
+caractères ou d’une expression régulière dans un (ou plusieurs)
+fichier(s). Cela se fait en utilisant l’outil <a
+href="https://www.gnu.org/software/grep/manual/grep.html#Invoking-grep"><code>grep</code></a>.</p>
+<p><a
+href="https://www.gnu.org/software/coreutils/manual/html_node/wc-invocation.html"><code>wc</code></a>
+est un autre utilitaire bien pratique qui permet de compter le nombre de
+lignes, de caractères, ou de mots d’un fichier texte.</p>
+<p>Enfin, <a
+href="https://www.gnu.org/software/diffutils/"><code>diff</code></a>
+permet d’afficher les différences (lignes qui contiennent des
+différences) entre deux fichiers texte.</p>
+<p><strong>Question 3.1.</strong> Quels sont les champs (en-tête de
+colonnes) des fichiers <code>M1_2022-2023.csv</code> et
+<code>M2_2023-2024.csv</code> ?</p>
+<p><strong>Question 3.2.</strong> Combien de lignes contiennent
+respectivement ces fichiers ?</p>
+<p><strong>Question 3.3.</strong> Affichez toutes les lignes contenant
+un numéro étudiant qui débute par <code>221</code>.</p>
+<p><strong>Question 3.4.</strong> Listez les étudiants qui n’étaient pas
+en M1 en 2022-2023 et qui sont en M2 en 2023-2024 et, respectivement,
+ceux qui étaient en M1 en 2022-2023 et qui sont pas en M2 en
+2023-2024.</p>
+<h1 id="enchaînement-de-commandes">4. Enchaînement de commandes</h1>
+<p>Les programmes, lorsqu’ils s’exécutent, produisent une sortie sous
+forme textuelle, qui est affichée dans le terminal. Cette sortie
+correspond en fait au contenu de deux canaux : <code>stdout</code>
+stocke la “sortie standard” alors que <code>stderr</code> stocke
+l’“erreur standard”, c’est-à-dire les affichages liés à des erreurs dans
+le programme.</p>
+<p>Ces deux flux sont traités comme des fichiers dans lesquels les
+programmes écrivent au fur et à mesure de leur exécution et dont les
+contenus sont affichés en quasi-temps réel dans le terminal.</p>
+<p>Il est possible de rediriger la sortie standard d’un programme pour
+que, au lieu de s’écrire dans un terminal, soit elle s’écrive dans un
+fichier texte, soit elle serve d’entrée à un autre programme :</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Écriture dans un fichier texte</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 arg2 <span class="op">&gt;</span> fichier_sortie.txt</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Redirection de la sortie vers l&#39;entrée</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># d&#39;un autre programme</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 arg2 <span class="kw">|</span> <span class="ex">autre_programme</span></span></code></pre></div>
+<p><strong>Question 4.1.</strong> Afficher uniquement la ligne 10 du
+fichier <code>M1_2022-2023.csv</code>.</p>
+<p><strong>Question 4.2.</strong> Comptez le nombre de lignes des
+fichiers <code>M1_2022-2023.csv</code> et <code>M2_2023-2024.csv</code>
+contenant un numéro étudiant qui débute par <code>221</code>.</p>
+<p><strong>Question 4.3.</strong> Même question en supprimant les
+doublons (jetez un oeil aux documentations de <code>sort</code> et
+<code>uniq</code>).</p>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>

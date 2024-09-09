@@ -1,3 +1,20 @@
+# Discussion migration Eskemm data
+
+* Focalisé sur le cours de Big Data avec dans l'idée la possibilité d'en profiter sur d'autres modules autour
+* Besoins du cours de Big Data
+    * Service
+    * Authentification fédération d'identité
+        * Exemples
+            * https://jupytercloud.math.cnrs.fr/instances/
+            * https://jupyterhub.ijclab.in2p3.fr/
+    * Outils
+        * JupyterHub avec Python+Dask
+            * https://jupyter.org/hub
+            * Possibilité de préparer une liste de paquets python nécessaires de notre côté
+        * Accès ligne de commande (éventuellement dans l'interface JupyterLab)
+        * Cluster Hadoop+Spark
+
+
 # Notes de préparation du cours de _big data_ en M2
 
 * Découpage du cours en séances : <https://docs.google.com/spreadsheets/d/1lSmKtL6B6NwOhqxt1XXEDzRb7gYjyvQ1dDxt6HOplgs/edit?usp=sharing>
@@ -67,3 +84,4 @@
 * TP ligne de commande : insister + sur les entrés / sorties standard (+ d'exemples en Python notamment) pour mieux préparer Hadoop MapReduce via Streaming
 * Résoudre le bug des caractères de fin de ligne au format Windows
 * Faire un meilleur 3ème exo pour Hadoop mapreduce
+* DaskML : regarder `chunks="auto"` pour voir si ce n'est pas toujours la meilleure option pour décider de la taille des chunks (cf. https://docs.dask.org/en/stable/generated/dask.array.from_array.html)

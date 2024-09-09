@@ -3,7 +3,5 @@ pandas
 numpy
 jupyter
 scikit-learn
-tensorflow
-keras_core
 bokeh
 dask_ml
