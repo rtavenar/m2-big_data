@@ -142,28 +142,36 @@ fait un système d’exploitation dans lequel la ligne de commande joue un
 grand rôle.</p>
 <p>Pour cette séance, vous pourrez travailler dans un Terminal si vous
 disposez d’un système d’exploitation basé sur Unix (Linux ou MacOS,
-typiquement). Sinon, il vous est recommandé de créer un compte sur <a
-href="www.deepnote.com">la plateforme Deepnote</a>, et d’y créer un
-nouveau projet nommé <code>TP_ligne_de_commande</code>. Une fois ce
-nouveau projet ouvert, vous pourrez démarrer un Terminal (<em>cf.</em>
-bandeau de gauche) et travailler, à distance, sur un système de type
-Unix.</p>
+typiquement).</p>
+<h1 id="si-vous-navez-pas-de-terminal-unix-sur-votre-machine">0. Si vous
+n’avez pas de terminal Unix sur votre machine</h1>
+<p>Dans ce cas, il vous est recommandé de <a href="colab.new">créer un
+nouveau notebook sur Google Colab</a>. Dans ce notebook, créez les
+cellules suivantes puis exécutez-les :</p>
+<pre class="ipynb"><code>!pip install colab-xterm
+%load_ext colabxterm</code></pre>
+<pre class="ipynb"><code>%xterm</code></pre>
+<p>Vous avez alors un terminal qui est créé et dans lequel vous allez
+pouvoir effectuer vos manipulations. Notez également que, dans le
+panneau de gauche, vous avez un navigateur de fichiers qui vous permet
+de visualiser les fichiers du dossier de travail (<code>/content/</code>
+sur Google Colab).</p>
 <h1 id="principes-de-base">1. Principes de base</h1>
 <p>Une commande Unix a le format suivant :</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 arg2 <span class="at">--nom_arg3</span> val_arg3</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 arg2 <span class="at">--nom_arg3</span> val_arg3</span></code></pre></div>
 <p>où <code>arg1</code>, <code>arg2</code>, et
 <code>--nom_arg3 val_arg3</code> sont des arguments passés en entrée au
 programme, un peu à la façon d’une fonction Python qui prendrait 3
 arguments et que l’on appellerait via :</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f(arg1, arg2, nom_arg3<span class="op">=</span>val_arg3)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>f(arg1, arg2, nom_arg3<span class="op">=</span>val_arg3)</span></code></pre></div>
 <p>On voit donc ici que la séparation entre les différents arguments
 passés en entrée d’un programme se fait à chaque espace. Si on souhaite
 insérer un espace dans la valeur d’un argument lors de l’appel, il
 faudra donc entourer cette valeur par des guillemets :</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 <span class="st">&quot;arg2 avec des espaces dedans&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 <span class="st">&quot;arg2 avec des espaces dedans&quot;</span></span></code></pre></div>
 <p>Notez que dans les exemples plus haut, pour plus de clarté, on a
 indiqué le prompt (ce qui est écrit dans le terminal avant le curseur)
 avec le caractère <code>%</code>. Nous utiliserons cette notation dans
@@ -176,14 +184,14 @@ permet de changer le dossier de travail du terminal, et qu’il prend
 comme unique argument le chemin (relatif ou absolu) vers le nouveau
 dossier de travail, quelle commande faut-il entrer pour vous placer dans
 le dossier nouvellement créé ?</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> cd <span class="st">&quot;./chemin vers/mon_dossier/de travail&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> cd <span class="st">&quot;./chemin vers/mon_dossier/de travail&quot;</span></span></code></pre></div>
 <p><strong>Question 1.2.</strong> Dans les deux commandes suivantes,
 quel est le nom du programme exécuté, et quels sont les arguments qui
 lui sont passés en entrée ?</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> wget https://raw.githubusercontent.com/rtavenar/m2-big_data/main/notebooks/data/unix/unix.zip <span class="at">--output-document</span> unix_data.zip</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> unzip unix_data.zip</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> wget https://raw.githubusercontent.com/rtavenar/m2-big_data/main/notebooks/data/unix/unix.zip <span class="at">--output-document</span> unix_data.zip</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> unzip unix_data.zip</span></code></pre></div>
 <p><strong>Question 1.3.</strong> Exécutez les commandes précédentes
 l’une après l’autre et vérifiez que de nouveaux fichiers et dossiers ont
 été téléchargés puis décompressés (c’est le sens respectif des commandes
@@ -255,7 +263,7 @@ href="https://www.gnu.org/software/coreutils/manual/html_node/rm-invocation.html
 <code>whoami</code> pour connaître le nom de l’utilisateur courant.
 Vérifiez qu’un dossier <code>/home/nom_d_utilisateur/</code> (ou
 <code>/Users/nom_d_utilisateur/</code> si vous êtes sous macOS) existe
-bien. Si vous êtes sur Deepnote et qu’un tel dossier n’existe pas,
+bien. Si vous êtes sur Google Colab et qu’un tel dossier n’existe pas,
 existe-t-il d’autres dossiers utilisateurs ?</p>
 <pre><code>% whoami
 rtavenar
@@ -265,9 +273,9 @@ ls: /home/rtavenar: No such file or directory
 <p><strong>Question 2.2.</strong> Créez un sous-dossier
 <code>data/</code> dans le dossier courant et déplacez-y tous les
 fichiers dont l’extension est <code>.csv</code> du dossier courant.</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> mkdir data</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> mv <span class="pp">*</span>.csv <span class="pp">*</span>.txt data/</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> mkdir data</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> mv <span class="pp">*</span>.csv data/</span></code></pre></div>
 <p>Sous Unix, les fichiers ont des permissions, c’est-à-dire que chaque
 utilisateur a le droit ou non d’interagir avec eux. Il existe trois
 types de permissions :</p>
@@ -284,12 +292,12 @@ système.</p>
 <p>Si on liste les fichiers du dossier courant avec <code>ls -al</code>,
 on a des informations sur les droits associés aux différents fichiers
 :</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ls <span class="at">-al</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 8</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x@</span> 3 rtavenar  staff   96 29 sep 10:02 .</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x@</span> 6 rtavenar  staff  192 29 sep 10:02 ..</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwxr--r--@</span> 1 rtavenar  staff  373 29 sep 09:40 lire_args.py</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ls <span class="at">-al</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 8</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x@</span> 3 rtavenar  staff   96 29 sep 10:02 .</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x@</span> 6 rtavenar  staff  192 29 sep 10:02 ..</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwxr--r--@</span> 1 rtavenar  staff  373 29 sep 09:40 lire_args.py</span></code></pre></div>
 <p>On voit ci-dessus que le fichier <code>lire_args.py</code> appartient
 à l’utilisateur <code>rtavenar</code>, du groupe <code>staff</code>, et
 la liste des droits accordés est la suivante : <code>-rwxr--r--</code>.
@@ -310,38 +318,38 @@ comprendre son usage :</p>
 <ul>
 <li><p>Ajout (<code>+</code>) du droit de lecture (<code>r</code>) pour
 l’utilisateur (<code>u</code>) propriétaire du fichier :</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+r mon_fichier</span></code></pre></div></li>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+r mon_fichier</span></code></pre></div></li>
 <li><p>Suppression (<code>-</code>) du droit de lecture (<code>r</code>)
 pour l’utilisateur (<code>u</code>) propriétaire du fichier :</p>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u-r mon_fichier</span></code></pre></div></li>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u-r mon_fichier</span></code></pre></div></li>
 <li><p>Ajout (<code>+</code>) du droit d’écriture (<code>w</code>) pour
 le groupe (<code>g</code>) propriétaire du fichier :</p>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> g+w mon_fichier</span></code></pre></div></li>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> g+w mon_fichier</span></code></pre></div></li>
 <li><p>Ajout (<code>+</code>) du droit d’écriture (<code>w</code>) pour
 les autres utilisateurs (<em>other</em>, ou <code>o</code>) :</p>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+w mon_fichier</span></code></pre></div></li>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+w mon_fichier</span></code></pre></div></li>
 <li><p>Ajout (<code>+</code>) du droit de lecture (<code>r</code>) pour
 tous les utilisateurs (<code>ugo</code>) :</p>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ugo+r mon_fichier</span></code></pre></div></li>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ugo+r mon_fichier</span></code></pre></div></li>
 </ul>
 <p><strong>Question 2.3.</strong> Quels sont les droits accordés à votre
 utilisateur sur les fichiers <code>.csv</code> que vous avez déplacés
 dans le sous-dossier <code>data/</code> ? Vérifiez que vous êtes bien
 propriétaire de ces fichiers.</p>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ls <span class="at">-alh</span> data/<span class="pp">*</span>.csv</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--@</span> 1 rtavenar  staff   747B 29 sep 17:11 M1_2022-2023.csv</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--@</span> 1 rtavenar  staff   774B 29 sep 17:11 M2_2023-2024.csv</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ls <span class="at">-alh</span> data/<span class="pp">*</span>.csv</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--@</span> 1 rtavenar  staff   747B 29 sep 17:11 M1_2022-2023.csv</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--@</span> 1 rtavenar  staff   774B 29 sep 17:11 M2_2023-2024.csv</span></code></pre></div>
 <p><strong>Question 2.4.</strong> Ajoutez les droits d’exécutions aux
 utilisateurs du groupe propriétaire du fichier
 <code>lire_args.py</code>.</p>
-<div class="sourceCode" id="cb17"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> chmod g+x lire_args.py</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> chmod g+x lire_args.py</span></code></pre></div>
 <p>Dans les deux dernières questions de la section 1., vous avez
 spécifié expressément le chemin du script / programme à exécuter.
 Lorsque vous ne spécifiez pas cette information, le <em>shell</em> (le
@@ -356,22 +364,22 @@ d’environnement nommée <code>$PATH</code>.</p>
 d’environnement, utilisez-le pour voir le contenu de votre
 <code>$PATH</code>. Que signifie le caractère <code>:</code> dans
 l’affichage que vous obtenez ?</p>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> echo <span class="va">$PATH</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/rtavenar/py3.10_ml/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:/Users/rtavenar/py3.10_ml/bin:/Users/rtavenar/.rvm/bin</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> echo <span class="va">$PATH</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/rtavenar/py3.10_ml/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:/Users/rtavenar/py3.10_ml/bin:/Users/rtavenar/.rvm/bin</span></span></code></pre></div>
 <p><strong>Question 2.6.</strong> Le dossier courant (<code>.</code>)
 est-il inclus dans votre <code>$PATH</code> ? Confirmer / infirmer en
 essayant d’exécuter le programme <code>lire_args.py</code> du dossier
 courant sans préciser son chemin relatif.</p>
-<div class="sourceCode" id="cb19"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> lire_args.py</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">zsh:</span> command not found: lire_args.py</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> lire_args.py</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">zsh:</span> command not found: lire_args.py</span></code></pre></div>
 <h2 id="trucs-astuces">Trucs &amp; Astuces</h2>
 <p>La commande <code>which</code> permet de connaître le chemin complet
 vers le programme visé, par exemple :</p>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> which python</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/rtavenar/py3.10_ml/bin/python</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> which python</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/rtavenar/py3.10_ml/bin/python</span></span></code></pre></div>
 <p>Indique que, lorsque l’on entre la commande <code>python</code> dans
 le terminal, c’est le programme
 <code>/Users/rtavenar/py3.10_ml/bin/python</code> qui sera exécuté.</p>
@@ -417,27 +425,28 @@ différences) entre deux fichiers texte.</p>
 <p><strong>Question 3.1.</strong> Quels sont les champs (en-tête de
 colonnes) des fichiers <code>M1_2022-2023.csv</code> et
 <code>M2_2023-2024.csv</code> ?</p>
-<div class="sourceCode" id="cb21"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> head <span class="at">-n</span> 1 M1_2022-2023.csv</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> head <span class="at">-n</span> 1 M2_2023-2024.csv</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> cd data/</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> head <span class="at">-n</span> 1 M1_2022-2023.csv</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> head <span class="at">-n</span> 1 M2_2023-2024.csv</span></code></pre></div>
 <p><strong>Question 3.2.</strong> Combien de lignes contiennent
 respectivement ces fichiers ?</p>
-<div class="sourceCode" id="cb22"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> wc <span class="at">-l</span> M1_2022-2023.csv</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> wc <span class="at">-l</span> M2_2023-2024.csv</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> wc <span class="at">-l</span> M1_2022-2023.csv</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> wc <span class="at">-l</span> M2_2023-2024.csv</span></code></pre></div>
 <p><strong>Question 3.3.</strong> Affichez toutes les lignes contenant
 un numéro étudiant qui débute par <code>221</code>.</p>
-<div class="sourceCode" id="cb23"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> grep <span class="st">&quot;^221&quot;</span> <span class="pp">*</span>.csv</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> grep <span class="st">&quot;^221&quot;</span> <span class="pp">*</span>.csv</span></code></pre></div>
 <p>ou</p>
-<div class="sourceCode" id="cb24"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-x</span> <span class="st">&quot;221.*&quot;</span> data/<span class="pp">*</span>.csv</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-x</span> <span class="st">&quot;221.*&quot;</span> <span class="pp">*</span>.csv</span></code></pre></div>
 <p><strong>Question 3.4.</strong> Listez les étudiants qui n’étaient pas
 en M1 en 2022-2023 et qui sont en M2 en 2023-2024 et, respectivement,
 ceux qui étaient en M1 en 2022-2023 et qui sont pas en M2 en
 2023-2024.</p>
-<div class="sourceCode" id="cb25"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> diff M1_2022-2023.csv M2_2023-2024.csv</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> diff M1_2022-2023.csv M2_2023-2024.csv</span></code></pre></div>
 <h1 id="enchaînement-de-commandes">4. Enchaînement de commandes</h1>
 <p>Les programmes, lorsqu’ils s’exécutent, produisent une sortie sous
 forme textuelle, qui est affichée dans le terminal. Cette sortie
@@ -451,30 +460,30 @@ contenus sont affichés en quasi-temps réel dans le terminal.</p>
 <p>Il est possible de rediriger la sortie standard d’un programme pour
 que, au lieu de s’écrire dans un terminal, soit elle s’écrive dans un
 fichier texte, soit elle serve d’entrée à un autre programme :</p>
-<div class="sourceCode" id="cb26"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Écriture dans un fichier texte</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 arg2 <span class="op">&gt;</span> fichier_sortie.txt</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Redirection de la sortie vers l&#39;entrée</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># d&#39;un autre programme</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 arg2 <span class="kw">|</span> <span class="ex">autre_programme</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Écriture dans un fichier texte</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 arg2 <span class="op">&gt;</span> fichier_sortie.txt</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Redirection de la sortie vers l&#39;entrée</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># d&#39;un autre programme</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> nom_du_programme arg1 arg2 <span class="kw">|</span> <span class="ex">autre_programme</span></span></code></pre></div>
 <p><strong>Question 4.1.</strong> Afficher uniquement la ligne 10 du
 fichier <code>M1_2022-2023.csv</code>.</p>
-<div class="sourceCode" id="cb27"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> head <span class="at">-n</span> 10 M1_2022-2023.csv <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 1</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> head <span class="at">-n</span> 10 M1_2022-2023.csv <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 1</span></code></pre></div>
 <p><strong>Question 4.2.</strong> Comptez le nombre de lignes des
 fichiers <code>M1_2022-2023.csv</code> et <code>M2_2023-2024.csv</code>
 contenant un numéro étudiant qui débute par <code>221</code>.</p>
-<div class="sourceCode" id="cb28"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> grep <span class="st">&quot;^221&quot;</span> <span class="pp">*</span>.csv <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> grep <span class="st">&quot;^221&quot;</span> <span class="pp">*</span>.csv <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
 <p><strong>Question 4.3.</strong> Même question en supprimant les
 doublons (jetez un oeil aux documentations de <code>sort</code> et
 <code>uniq</code>).</p>
-<div class="sourceCode" id="cb29"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> cat <span class="pp">*</span>.csv <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&quot;^221&quot;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> cat <span class="pp">*</span>.csv <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&quot;^221&quot;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
 <p>ou</p>
-<div class="sourceCode" id="cb30"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-h</span> <span class="st">&#39;^221&#39;</span> data/<span class="pp">*</span>.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span><span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-h</span> <span class="st">&#39;^221&#39;</span> <span class="pp">*</span>.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span><span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
             </div>
     </div>
   </div>

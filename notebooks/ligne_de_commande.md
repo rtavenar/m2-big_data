@@ -14,7 +14,24 @@ Dans cette séance, vous allez apprendre à utiliser une interface en ligne de c
 On parlera ici de commandes Unix, par abus de langage.
 Unix est en fait un système d'exploitation dans lequel la ligne de commande joue un grand rôle.
 
-Pour cette séance, vous pourrez travailler dans un Terminal si vous disposez d'un système d'exploitation basé sur Unix (Linux ou MacOS, typiquement). Sinon, il vous est recommandé de créer un compte sur [la plateforme Deepnote](www.deepnote.com), et d'y créer un nouveau projet nommé `TP_ligne_de_commande`. Une fois ce nouveau projet ouvert, vous pourrez démarrer un Terminal (_cf._ bandeau de gauche) et travailler, à distance, sur un système de type Unix.
+Pour cette séance, vous pourrez travailler dans un Terminal si vous disposez d'un système d'exploitation basé sur Unix (Linux ou MacOS, typiquement).  
+
+# 0. Si vous n'avez pas de terminal Unix sur votre machine
+
+Dans ce cas, il vous est recommandé de [créer un nouveau notebook sur Google Colab](colab.new). 
+Dans ce notebook, créez les cellules suivantes puis exécutez-les :
+
+```ipynb
+!pip install colab-xterm
+%load_ext colabxterm
+```
+
+```ipynb
+%xterm
+```
+
+Vous avez alors un terminal qui est créé et dans lequel vous allez pouvoir effectuer vos manipulations.
+Notez également que, dans le panneau de gauche, vous avez un navigateur de fichiers qui vous permet de visualiser les fichiers du dossier de travail (`/content/` sur Google Colab).
 
 # 1. Principes de base
 
@@ -72,7 +89,7 @@ Les commandes importantes pour naviguer dans un système de fichiers Unix sont l
 * [`mv`](https://www.gnu.org/software/coreutils/manual/html_node/mv-invocation.html) : déplacer un fichier ou dossier
 * [`rm`](https://www.gnu.org/software/coreutils/manual/html_node/rm-invocation.html) : supprimer un fichier
 
-**Question 2.1.** Utilisez la commande `whoami` pour connaître le nom de l'utilisateur courant. Vérifiez qu'un dossier `/home/nom_d_utilisateur/` (ou `/Users/nom_d_utilisateur/` si vous êtes sous macOS) existe bien. Si vous êtes sur Deepnote et qu'un tel dossier n'existe pas, existe-t-il d'autres dossiers utilisateurs ?
+**Question 2.1.** Utilisez la commande `whoami` pour connaître le nom de l'utilisateur courant. Vérifiez qu'un dossier `/home/nom_d_utilisateur/` (ou `/Users/nom_d_utilisateur/` si vous êtes sous macOS) existe bien. Si vous êtes sur Google Colab et qu'un tel dossier n'existe pas, existe-t-il d'autres dossiers utilisateurs ?
 
 **Question 2.2.** Créez un sous-dossier `data/` dans le dossier courant et déplacez-y tous les fichiers dont l'extension est `.csv` du dossier courant.
 
